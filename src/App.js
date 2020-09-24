@@ -1,38 +1,30 @@
 import React, { Component } from 'react';
 import './App.css';
-// import ListArticles from './ListArticles';
-// import SearchForm from './SeachForm';
 import axios from 'axios';
+import ListArticles from './components/ListArticles';
 
 class App extends Component {
     state = {
       articles: []
     }
-  
 
   getArticles = () => {
         return axios.get('http://hn.algolia.com/api/v1/search?tags=front_page')
         .then(res => {
-          const articles = res.data
-          console.log(articles)
-            this.setState({ article: articles})
-            
-          })
-          
-   }
-        render() {
-          return(
+          // console.log('data', res.data.hits)
+          const articles = res.data.hits
+          this.setState({ articles: [...articles]})
+        })
+      }
+      render() {
+        // console.log(this.state.articles)
+        return(
             <div>
               <button onClick={this.getArticles}>Oi mate</button>
-              {/* <ListArticles />
-              <SearchForm /> */}
+              <ListArticles articles={this.state.articles}/>
             </div>
           )
        }
-       
 }
  export default App;
-        
 
-            
-          

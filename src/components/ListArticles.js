@@ -3,14 +3,18 @@ import DisplayArticleCard from './DisplayArticleCard'
 
 
 class ListArticles extends Component {
-    state = {
-        articles: []
+    constructor(props){
+        super(props)
+        this.state = {
+        articles: ["poop", "more poop"]
+        }
     }
 
     render() {
+        console.log("list articles", this.props.articles)
       return(
         <div>
-            {this.state.articles.map((article) => {return <DisplayArticleCard key ={article.id} info={article} />
+            {this.props.articles.map((article) => {return <DisplayArticleCard key={article.url} items={article} />
     })}
         </div>
       );
