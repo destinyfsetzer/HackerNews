@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+// import ListArticles from './ListArticles';
+// import SearchForm from './SeachForm';
+import axios from 'axios';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    state = {
+      articles: []
+    }
+  
+
+  getArticles = () => {
+        return axios.get('http://hn.algolia.com/api/v1/search?tags=front_page')
+        .then(res => {
+          const articles = res.data
+          console.log(articles)
+            this.setState({ article: articles})
+            
+          })
+          
+   }
+        render() {
+          return(
+            <div>
+              <button onClick={this.getArticles}>Oi mate</button>
+              {/* <ListArticles />
+              <SearchForm /> */}
+            </div>
+          )
+       }
+       
 }
+ export default App;
+        
 
-export default App;
+            
+          
