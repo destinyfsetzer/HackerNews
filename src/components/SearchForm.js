@@ -7,7 +7,7 @@ class SearchForm extends Component {
         super(props);
         this.state = {
             input: '',
-            results: {},
+            articles: {},
          }
     }
 

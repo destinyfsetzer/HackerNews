@@ -21,8 +21,8 @@ class App extends Component {
         // console.log(this.state.articles)
         return(
             <div>
-              <button onClick={this.getArticles}>Oi mate</button>
               <SearchForm />
+              <button onClick={this.getArticles}>Oi mate</button>
               <ListArticles articles={this.state.articles}/>
             </div>
           )
