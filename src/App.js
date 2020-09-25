@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 import ListArticles from './components/ListArticles';
 import SearchForm from './components/SearchForm';
+import { Button } from '@material-ui/core';
 
 class App extends Component {
     state = {
@@ -22,7 +23,10 @@ class App extends Component {
         return(
             <div>
               <SearchForm />
-              <button onClick={this.getArticles}>Oi mate</button>
+                <Button onClick={this.getArticles} variant="contained" color="primary" >
+                    Get me Articles!
+                </Button>
+              {/* <Button onClick={this.getArticles}>Oi mate</Button> */}
               <ListArticles articles={this.state.articles}/>
             </div>
           )
