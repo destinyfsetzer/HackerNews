@@ -5,20 +5,17 @@ import axios from 'axios';
 class SearchForm extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             input: '',
             results: {},
          }
     }
 
     fetchSearchResults = (updatedPageNo = '', query) =>{
-        
         const pageNumber = updatedPageNo ? `&page=${updatedPageNo}` : '';
         const searchUrl = `http://hn.algolia.com/api/v1/search?query=${query}${pageNumber}`
         axios.get(searchUrl)
         .then(response => response.json())
-        
-        
 
     };
 
@@ -28,19 +25,17 @@ class SearchForm extends Component {
          this.setState({input: query}, () => {
              this.fetchSearchResults(1, query);
          })
-         
-         
     };
 
 
-    render() { 
+    render() {
         const {query} = this.state;
         return (
             <div className='search'>
                 <h2 className='header'>Hacker News Search App</h2>
                 <label>
-        
-                    <input 
+
+                    <input
                         type='text'
                         value={query}
                         id='search-field'
@@ -53,5 +48,4 @@ class SearchForm extends Component {
           );
     }
 }
- 
 export default SearchForm;

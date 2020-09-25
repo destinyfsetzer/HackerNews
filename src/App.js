@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import ListArticles from './components/ListArticles';
+import SearchForm from './components/SearchForm';
 
 class App extends Component {
     state = {
@@ -21,6 +22,7 @@ class App extends Component {
         return(
             <div>
               <button onClick={this.getArticles}>Oi mate</button>
+              <SearchForm />
               <ListArticles articles={this.state.articles}/>
             </div>
           )
