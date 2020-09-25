@@ -9,11 +9,13 @@ class DisplayArticleCard extends Component {
 
     return (
       <div>
+        <ol>
         <h6> {items.url} </h6>
         <a href = {items.url}>
           <h3> {items.title} </h3>
         </a>
         <h4> Author: {items.author} | Date Created: {formattedDate} | Points: {items.points} </h4>
+        </ol>
       </div>
     )
   }
