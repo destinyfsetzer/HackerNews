@@ -3,7 +3,7 @@ import './App.css';
 import axios from 'axios';
 import ListArticles from './components/ListArticles';
 import SearchForm from './components/SearchForm';
-import { Button } from '@material-ui/core';
+// import { Button } from '@material-ui/core';
 
 class App extends Component {
     state = {
@@ -18,15 +18,19 @@ class App extends Component {
           this.setState({ articles: [...articles]})
         })
       }
+
+      componentDidMount() {
+    this.getArticles()
+  }
+
       render() {
         // console.log(this.state.articles)
         return(
-            <div>
+            <div className="news-display">
               <SearchForm />
-                <Button onClick={this.getArticles} variant="contained" color="primary" >
+                {/* <Button onClick={this.getArticles} variant="contained" color="primary" >
                     Get me Articles!
-                </Button>
-              {/* <Button onClick={this.getArticles}>Oi mate</Button> */}
+                </Button> */}
               <ListArticles articles={this.state.articles}/>
             </div>
           )
