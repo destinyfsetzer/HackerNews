@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import DisplayArticleCard from './DisplayArticleCard'
 
-
 class ListArticles extends Component {
     constructor(props){
         super(props)

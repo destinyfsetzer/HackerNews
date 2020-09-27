@@ -3,38 +3,50 @@ import './App.css';
 import axios from 'axios';
 import ListArticles from './components/ListArticles';
 import SearchForm from './components/SearchForm';
-// import { Button } from '@material-ui/core';
 
 class App extends Component {
     state = {
-      articles: []
+      articles: [],
+      searchfield: ''
     }
 
   getArticles = () => {
         return axios.get('http://hn.algolia.com/api/v1/search?tags=front_page')
         .then(res => {
-          // console.log('data', res.data.hits)
           const articles = res.data.hits
           this.setState({ articles: [...articles]})
         })
-      }
+  }
 
-      componentDidMount() {
+  componentDidMount() {
     this.getArticles()
   }
 
-      render() {
-        // console.log(this.state.articles)
-        return(
-            <div className="news-display">
-              <SearchForm />
-                {/* <Button onClick={this.getArticles} variant="contained" color="primary" >
-                    Get me Articles!
-                </Button> */}
-              <ListArticles articles={this.state.articles}/>
-            </div>
-          )
-       }
+  onSearchChange = (event) => {
+    this.setState({searchfield: event.target.value })
+  }
+
+  render() {
+    const filterOnTitle = this.state.articles.filter(article =>{
+      return article.title.toLowerCase().includes(this.state.searchfield.toLowerCase());
+    })
+
+    const filterOnAuthor = this.state.articles.filter(article =>{
+      return article.author.toLowerCase().includes(this.state.searchfield.toLowerCase());
+    })
+
+    if (this.state.articles.legnth === 0) {
+      return <h1>Loading</h1>
+    } else {
+      return (
+          <div>
+            <SearchForm articles={this.state.articles} filterChange={this.onSearchChange}/>
+            <ListArticles  articles={filterOnAuthor}/>
+            <ListArticles  articles={filterOnTitle}/>
+          </div>
+      );
+    }
+  }
 }
  export default App;
 
