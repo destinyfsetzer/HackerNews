@@ -67,4 +67,5 @@ h6 {
 
 span {
   display: flex;
+  overflow: hidden;
 }

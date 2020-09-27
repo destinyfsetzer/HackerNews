@@ -39,7 +39,7 @@ class SearchForm extends Component {
                         type='text'
                         value={query}
                         id='search-field'
-                        placeholder= "🔎 Search stories by title, url or author"
+                        placeholder= "🔎 Search stories by title, url or author..."
                         onChange={this.handleOnInputChange}
                     />
                 </label>
