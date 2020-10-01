@@ -7,7 +7,7 @@ const SearchForm = ({ searchfield, filterChange }) => {
             <h4 className='header'> Search <br/> Hacker News</h4>
             <input
                 type='search'
-                placeholder= "🔎 Search stories by title or author..."
+                placeholder= "🔎 Search stories by title, tag,  or author..."
                 onChange={filterChange}
             />
         </div>

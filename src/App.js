@@ -35,7 +35,11 @@ class App extends Component {
       return article.author.toLowerCase().includes(this.state.searchfield.toLowerCase());
     })
 
-    if (this.state.articles.legnth === 0) {
+     const filterOnTags = this.state.articles.filter(article =>{
+      return article._tags.includes(this.state.searchfield.toLowerCase());
+    })
+
+    if (this.state.articles.length === 0) {
       return <h1>Loading</h1>
     } else {
       return (
@@ -43,6 +47,7 @@ class App extends Component {
             <SearchForm articles={this.state.articles} filterChange={this.onSearchChange}/>
             <ListArticles  articles={filterOnAuthor}/>
             <ListArticles  articles={filterOnTitle}/>
+            <ListArticles  articles={filterOnTags}/>
           </div>
       );
     }

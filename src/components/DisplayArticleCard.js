@@ -11,12 +11,13 @@ class DisplayArticleCard extends Component {
       <div>
         <ol>
         <span>
-        <a href = {items.url}>
-        <h4> {items.title} </h4>
+        <a href = {items.url} target="_blank" rel="noopener noreferrer">
+          <h4> {items.title} </h4>
         </a>
-         <h6>( {items.url} )</h6>
         </span>
         <h5> Author: {items.author} | Date Created: {formattedDate} | Points: {items.points} </h5>
+        <h6>Tags: {items._tags}</h6>
+        <h6> {items.url} </h6>
         </ol>
       </div>
     )

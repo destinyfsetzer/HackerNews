@@ -63,9 +63,10 @@ h5 {
 
 h6 {
   margin: 17px auto auto 0px;
+  font-style: italic;
 }
 
-span {
+/* span {
   display: flex;
   overflow: hidden;
-}
+} */
