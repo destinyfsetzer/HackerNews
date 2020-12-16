@@ -11,7 +11,7 @@ class App extends Component {
     }
 
   getArticles = () => {
-        return axios.get('http://hn.algolia.com/api/v1/search?tags=front_page')
+        return axios.get('https://hn.algolia.com/api/v1/search?tags=front_page')
         .then(res => {
           const articles = res.data.hits
           this.setState({ articles: [...articles]})
